@@ -22,7 +22,7 @@ with DAG(
     fool_task = PythonOperator(
         task_id="fool_task",
         python_callable=fool_fn,
-        email=["phil.park@sktai.io"],
+        email=["test@sktai.io"],
         email_on_retry=True,
         email_on_failure=True,
     )
