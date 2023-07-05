@@ -8,7 +8,7 @@ from datetime import datetime
 from airflow import DAG
 from airflow.exceptions import AirflowException
 from airflow.operators.python import PythonOperator
-from slack_plugin import get_fail_alert
+from macros.slack import get_slack_notifier
 
 
 def _test():
@@ -21,7 +21,7 @@ with DAG(
     default_args={
         "owner": "홍길동",
         "start_date": datetime(2023, 5, 17),
-        "on_failure_callback": get_fail_alert(email="test@sk.com"),
+        "on_failure_callback": get_slack_notifier(slack_email="test@sk.com"),
     },
     catchup=False,
 ) as dag:
